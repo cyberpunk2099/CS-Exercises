@@ -31,16 +31,16 @@ namespace MaximumSubarray
                 if (array[i] <= 0) continue;
                 for (int j = i; j < array.Length; j++)
                 {
-                    var total = 0;
+                    var sum = 0;
                     for (int k = i; k <= j; k++)
-                        total += array[k];
-                    if (total >= sub.total && (sub.start < 0 || (j - i) < (sub.end - sub.start)))
-                        sub = (i, j, total);
+                        sum += array[k];
+                    if (sum > sub.total || (sum == sub.total && (j - i) < (sub.end - sub.start)))
+                        sub = (i, j, sum);
                 }
             }
             if (sub.start >= 0)
             {
-                var result = new int[sub.end];
+                var result = new int[sub.end + 1];
                 var index = 0;
                 for (int i = sub.start; i <= sub.end; i++)
                     result[index++] = array[i];

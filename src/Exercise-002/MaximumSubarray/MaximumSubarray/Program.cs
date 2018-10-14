@@ -6,7 +6,7 @@ namespace MaximumSubarray
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Maximum Subarray Problem");
+            Console.WriteLine("MAXIMUM SUBARRAY PROBLEM");
             Console.WriteLine("Sample Array: 1, -3, 2, 1, -1");
             Console.WriteLine("Quit: q");
             while (true)
@@ -17,13 +17,11 @@ namespace MaximumSubarray
                 if (array.ToLowerInvariant() == "q") return;
                 try
                 {
-                    Console.WriteLine(
-                        $"Maximum Subarray: {Calc.GetMaximumSubarray(array)} \r\n");
+                    Console.Write($"Maximum Subarray: {Calc.GetMaximumSubarray(array)}\r\n\r\n");
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"ERROR: {e.Message} \r\n");
-                    continue;
+                    Console.WriteLine($"ERROR: {e.Message}\r\n");
                 }
             }
         }
