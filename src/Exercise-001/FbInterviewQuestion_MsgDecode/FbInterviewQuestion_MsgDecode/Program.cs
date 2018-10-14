@@ -9,14 +9,20 @@ namespace FbInterviewQuestion_MsgDecode
             Console.WriteLine("Facebook Coding Interview Question");
             Console.WriteLine(" How Many Ways to Decode This Message?");
             Console.WriteLine(" - Sample message: 85121215");
-            Console.WriteLine(" - To exit: 0 \r\n");
+            Console.WriteLine(" - Quit: q \r\n");
             while (true)
             {
                 Console.Write("Enter Coded Text: ");
                 var code = Console.ReadLine().Trim();
-                if (code == "0") return;
-                Console.Write(
-                    $"Possible Decodes: {Calc.GetNumberOfDecodes(code).ToString("#,##0")}\r\n\r\n");
+                if (code.ToLowerInvariant() == "q") return;
+                try
+                {
+                    Console.WriteLine($"Possible Decodes: {Helper.GetDecodeCount(code)}\r\n");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"ERROR: {e.Message}\r\n");
+                }
             }
         }
     }

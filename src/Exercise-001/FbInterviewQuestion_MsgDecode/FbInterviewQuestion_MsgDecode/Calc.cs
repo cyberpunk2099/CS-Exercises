@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 
@@ -17,20 +16,7 @@ namespace FbInterviewQuestion_MsgDecode
               "20", "21", "22", "23", "24", "25", "26"
             };
 
-        public static BigInteger GetNumberOfDecodes(string code)
-        {
-            var start = Environment.TickCount;
-            try
-            {
-                return GetNumberOfDecodes(code, new Dictionary<int, BigInteger>());
-            }
-            finally
-            {
-                Debug.WriteLine($"{Environment.TickCount - start}ms");
-            }
-        }
-
-        static BigInteger GetNumberOfDecodes(string s, Dictionary<int, BigInteger> memo)
+        public static BigInteger GetDecodeCount(string s, Dictionary<int, BigInteger> memo)
         {
             var len = s.Length;
             if (len == 0 || s == "0") return 0;
@@ -49,11 +35,12 @@ namespace FbInterviewQuestion_MsgDecode
                     break;
                 default:
                     if (Table.Contains(s.Substring(0, 1)))
-                        result = GetNumberOfDecodes(s.Substring(1), memo);
+                        result = GetDecodeCount(s.Substring(1), memo);
                     if (Table.Contains(s.Substring(0, 2)))
-                        result += GetNumberOfDecodes(s.Substring(2), memo);
+                        result += GetDecodeCount(s.Substring(2), memo);
                     break;
             }
+            if (result == 0) throw new FormatException($"Cannot decode '{s}'");
             memo.Add(len, result);
             return result;
         }
