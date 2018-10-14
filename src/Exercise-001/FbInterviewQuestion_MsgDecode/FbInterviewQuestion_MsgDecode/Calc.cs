@@ -35,7 +35,7 @@ namespace FbInterviewQuestion_MsgDecode
                         result += GetDecodeCount(s.Substring(2), memo);
                     break;
             }
-            if (result == 0 && s.Any(i => !char.IsDigit(i)))
+            if (result == 0) //if (result == 0 && s.Any(i => !char.IsDigit(i)))
                 throw new ArgumentException($"Cannot decode '{s}'");
             memo.Add(len, result);
             return result;
