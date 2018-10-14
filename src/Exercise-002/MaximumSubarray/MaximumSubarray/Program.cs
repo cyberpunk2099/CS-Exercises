@@ -15,17 +15,16 @@ namespace MaximumSubarray
                 var array = Console.ReadLine().Trim();
                 if (string.IsNullOrEmpty(array)) continue;
                 if (array.ToLowerInvariant() == "q") return;
-                var subarray = "";
                 try
                 {
-                    subarray = Calc.GetMaximumSubarray(array);
+                    Console.WriteLine(
+                        $"Maximum Subarray: {Calc.GetMaximumSubarray(array)} \r\n");
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"ERROR: {e.Message}\r\n");
+                    Console.WriteLine($"ERROR: {e.Message} \r\n");
                     continue;
                 }
-                Console.WriteLine($"Maximum Subarray: {subarray}\r\n");
             }
         }
     }
