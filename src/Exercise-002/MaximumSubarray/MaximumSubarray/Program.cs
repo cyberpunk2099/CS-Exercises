@@ -17,7 +17,7 @@ namespace MaximumSubarray
                 if (array.ToLowerInvariant() == "q") return;
                 try
                 {
-                    Console.Write($"Maximum Subarray: {Calc.GetMaximumSubarray(array)}\r\n\r\n");
+                    Console.Write($"Maximum Subarray: {Helper.GetMaximumSubarray(array)}\r\n\r\n");
                 }
                 catch (Exception e)
                 {
