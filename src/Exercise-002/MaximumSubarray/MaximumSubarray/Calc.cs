@@ -24,7 +24,7 @@ namespace MaximumSubarray
             if (array.Length <= 1) return array;
 
             var max = int.MinValue;
-            var subarray = (start: -1, end: -1, total: int.MinValue);
+            var sub = (start: -1, end: -1, total: int.MinValue);
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] > max) max = array[i];
@@ -34,15 +34,15 @@ namespace MaximumSubarray
                     var total = 0;
                     for (int k = i; k <= j; k++)
                         total += array[k];
-                    if (total >= subarray.total && (j - i) < (subarray.end - subarray.start))
-                        subarray = (i, j, total);
+                    if (total >= sub.total && (sub.start < 0 || (j - i) < (sub.end - sub.start)))
+                        sub = (i, j, total);
                 }
             }
-            if (subarray.start >= 0)
+            if (sub.start >= 0)
             {
-                var result = new int[subarray.end];
+                var result = new int[sub.end];
                 var index = 0;
-                for (int i = subarray.start; i <= subarray.end; i++)
+                for (int i = sub.start; i <= sub.end; i++)
                     result[index++] = array[i];
                 Array.Resize(ref result, index);
                 return result;
