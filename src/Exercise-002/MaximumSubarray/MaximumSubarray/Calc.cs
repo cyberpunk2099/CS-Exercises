@@ -34,13 +34,11 @@ namespace MaximumSubarray
                     var total = 0;
                     for (int k = i; k <= j; k++)
                         total += array[k];
-                    if (total > subarray.total)
-                        subarray = (i, j, total);
-                    else if (total == subarray.total && (j - i) < (subarray.end - subarray.start))
+                    if (total >= subarray.total && (j - i) < (subarray.end - subarray.start))
                         subarray = (i, j, total);
                 }
             }
-            if (subarray.start >= 0 && subarray.end >= 0)
+            if (subarray.start >= 0)
             {
                 var result = new int[subarray.end];
                 var index = 0;
