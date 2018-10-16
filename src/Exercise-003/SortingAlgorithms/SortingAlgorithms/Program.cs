@@ -22,7 +22,7 @@ Start:
                 {
                     while (true)
                     {
-                        var array = ArrayExtensions.CreateRandom(count, 100, 1);
+                        var array = Utils.CreateRandomArray(count, 100, 1);
                         print(array.ToShortText());
                         print($"Sort {count} items with: ");
                         print(" (S)election Sort");

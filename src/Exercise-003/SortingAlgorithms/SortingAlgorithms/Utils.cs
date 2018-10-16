@@ -2,30 +2,11 @@
 
 namespace SortingAlgorithms
 {
-    public static class ArrayExtensions
+    public static class Utils
     {
-        public static void SelectionSort<T>(this T[] a) where T : IComparable<T>
-        {
-            if (a == null || a.Length <= 1) return;
-            var p = 0;
-            while (p < a.Length - 1)
-            {
-                var min = p;
-                for (int i = p + 1; i < a.Length; i++)
-                {
-                    if (a[i].CompareTo(a[min]) < 0)
-                        min = i;
-                }
-                if (a[min].CompareTo(a[p]) < 0)
-                    (a[min], a[p]) = (a[p], a[min]);
-                p++;
-            }
-        }
-
         public static string ToShortText<T>(this T[] a)
         {
-            if (a == null) return string.Empty;
-            switch (a.Length)
+            switch (a?.Length ?? 0)
             {
                 case 0:
                     return "[]";
@@ -44,7 +25,7 @@ namespace SortingAlgorithms
             }
         }
 
-        public static int[] CreateRandom(int size, int? max = null, int? min = null)
+        public static int[] CreateRandomArray(int size, int? max = null, int? min = null)
         {
             if (size < 0) throw new ArgumentOutOfRangeException(nameof(size));
             var result = new int[size];
