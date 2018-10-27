@@ -11,8 +11,7 @@ namespace FbInterviewQuestion_MsgDecode
         public static string GetDecodeCount(string code)
         {
             if (string.IsNullOrWhiteSpace(code) || code[0] == '0')
-                throw new FormatException(
-                    $"Cannot decode {(code == null ? "null" : $"'{code}'")}");
+                throw new FormatException($"Cannot decode '{code ?? "null"}'");
             var start = Environment.TickCount;
             try
             {
