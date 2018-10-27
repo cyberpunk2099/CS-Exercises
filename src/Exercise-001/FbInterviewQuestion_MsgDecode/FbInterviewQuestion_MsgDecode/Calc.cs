@@ -14,7 +14,7 @@ namespace FbInterviewQuestion_MsgDecode
         public static BigInteger GetDecodeCount(string s, Dictionary<int, BigInteger> memo)
         {
             var len = s.Length;
-            if (len == 0 || s == "0") return 0;
+            if (len == 0 || s.StartsWith('0')) return 0;
             if (memo.ContainsKey(len)) return memo[len];
             BigInteger result = 0;
             switch (len)
@@ -25,18 +25,18 @@ namespace FbInterviewQuestion_MsgDecode
                 case 2:
                     if (Map.Contains(s))
                         result++;
-                    if (Map.Contains(s.Substring(0, 1)) && Map.Contains(s.Substring(1, 1)))
+                    if (Map.Contains(s[0]) && Map.Contains(s[1]))
                         result++;
                     break;
                 default:
-                    if (Map.Contains(s.Substring(0, 1)))
+                    if (Map.Contains(s[0]))
                         result = GetDecodeCount(s.Substring(1), memo);
-                    if (Map.Contains(s.Substring(0, 2)))
+                    if (Map.Contains(s[0], s[1]))
                         result += GetDecodeCount(s.Substring(2), memo);
                     break;
             }
-            if (result == 0) //if (result == 0 && s.Any(i => !char.IsDigit(i)))
-                throw new ArgumentException($"Cannot decode '{s}'");
+            if (result == 0)
+                throw new FormatException($"Cannot decode '{s}'");
             memo.Add(len, result);
             return result;
         }
