@@ -31,6 +31,7 @@ Start:
                         print("  -or-");
                         print(" (R)estart");
                         print(" E(X)IT");
+
                         var key = Console.ReadKey().KeyChar.ToString().ToUpper();
                         var start = Environment.TickCount;
                         switch (key)
@@ -43,7 +44,12 @@ Start:
                                     $"({Environment.TickCount - start}ms) \r\n");
                                 break;
                             case "B":
-                                throw new NotImplementedException("B");
+                                array.BubbleSort();
+                                print($"\r\n{array.ToShortText()}");
+                                print(
+                                    $"\r\n{count} items are sorted by 'Bubble Sort' " +
+                                    $"({Environment.TickCount - start}ms) \r\n");
+                                break;
                             case "M":
                                 throw new NotImplementedException("M");
                             case "R":

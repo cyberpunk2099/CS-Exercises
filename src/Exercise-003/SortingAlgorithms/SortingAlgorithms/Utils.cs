@@ -6,8 +6,10 @@ namespace SortingAlgorithms
     {
         public static string ToShortText<T>(this T[] a)
         {
-            switch (a?.Length ?? 0)
+            switch (a?.Length)
             {
+                case null:
+                    return "NULL";
                 case 0:
                     return "[]";
                 case 1:
