@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SortingAlgorithms
 {
@@ -42,6 +44,13 @@ namespace SortingAlgorithms
                     swapped++;
                 }
             }
+        }
+        
+        /// <summary TODO: Insertion Sort />
+        /// <seealso cref="https://www.youtube.com/watch?v=ntB1D3Bbz5I"/>
+        public static void InsertionSort<T>(this IList<T> a) where T : IComparable
+        {
+            throw new NotImplementedException(nameof(InsertionSort));
         }
     }
 }

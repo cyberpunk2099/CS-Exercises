@@ -27,6 +27,7 @@ Start:
                         print($"Sort {count} items with: ");
                         print(" (S)election Sort");
                         print(" (B)ubble Sort");
+                        print(" I(n)sertion Sort");
                         print(" (M)erge Sort");
                         print("  -or-");
                         print(" (R)estart");
@@ -48,6 +49,13 @@ Start:
                                 print($"\r\n{array.ToShortText()}");
                                 print(
                                     $"\r\n{count} items are sorted by 'Bubble Sort' " +
+                                    $"({Environment.TickCount - start}ms) \r\n");
+                                break;
+                            case "N":
+                                array.InsertionSort();
+                                print($"\r\n{array.ToShortText()}");
+                                print(
+                                    $"\r\n{count} items are sorted by 'Insertion Sort' " +
                                     $"({Environment.TickCount - start}ms) \r\n");
                                 break;
                             case "M":

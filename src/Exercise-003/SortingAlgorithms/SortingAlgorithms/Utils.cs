@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SortingAlgorithms
 {
@@ -42,6 +43,13 @@ namespace SortingAlgorithms
                     result[i] = random.Next();
             }
             return result;
+        }
+
+        public static void Move<T>(this IList<T> a, int oldIndex, int newIndex)
+        {
+            var removed = a[oldIndex];
+            a.RemoveAt(oldIndex);
+            a.Insert(newIndex, removed);
         }
     }
 }
