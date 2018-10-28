@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SortingAlgorithms
 {
@@ -50,7 +49,13 @@ namespace SortingAlgorithms
         /// <seealso cref="https://www.youtube.com/watch?v=ntB1D3Bbz5I"/>
         public static void InsertionSort<T>(this IList<T> a) where T : IComparable
         {
-            throw new NotImplementedException(nameof(InsertionSort));
+            if (a == null || a.Count <= 1) return;
+            for (var i = 0; ++i < a.Count;)
+                for (var j = i; --j >= 0;)
+                {
+                    if (a[j].CompareTo(a[j + 1]) <= 0) break;
+                    a.Move(j + 1, j);
+                }
         }
     }
 }

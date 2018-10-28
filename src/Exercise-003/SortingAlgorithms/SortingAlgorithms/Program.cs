@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace SortingAlgorithms
 {
@@ -52,8 +53,9 @@ Start:
                                     $"({Environment.TickCount - start}ms) \r\n");
                                 break;
                             case "N":
-                                array.InsertionSort();
-                                print($"\r\n{array.ToShortText()}");
+                                var list = array.ToList();
+                                list.InsertionSort();
+                                print($"\r\n{list.ToShortText()}");
                                 print(
                                     $"\r\n{count} items are sorted by 'Insertion Sort' " +
                                     $"({Environment.TickCount - start}ms) \r\n");

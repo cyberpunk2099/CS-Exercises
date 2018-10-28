@@ -28,6 +28,29 @@ namespace SortingAlgorithms
             }
         }
 
+        public static string ToShortText<T>(this IList<T> a)
+        {
+            switch (a?.Count)
+            {
+                case null:
+                    return "NULL";
+                case 0:
+                    return "[]";
+                case 1:
+                    return $"[{a[0]}]";
+                case 2:
+                    return $"[{a[0]}, {a[1]}]";
+                case 3:
+                    return $"[{a[0]}, {a[1]}, {a[2]}]";
+                case 4:
+                    return $"[{a[0]}, {a[1]}, {a[2]}, {a[3]}]";
+                default:
+                    if (a.Count < 10)
+                        return $"[{a[0]}, {a[1]}, {a[2]},..., {a[a.Count - 1]}]";
+                    return $"[{a[0]}, {a[1]}, {a[2]},..., {a[a.Count / 2]},..., {a[a.Count - 1]}]";
+            }
+        }
+
         public static int[] CreateRandomArray(int size, int? max = null, int? min = null)
         {
             if (size < 0) throw new ArgumentOutOfRangeException(nameof(size));
