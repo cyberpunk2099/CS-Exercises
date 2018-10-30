@@ -14,9 +14,9 @@ Start:
             {
                 Console.Write("Count: ");
                 if (!int.TryParse(Console.ReadLine(), out var count)) continue;
-                if (count < 4)
+                if (count < 2)
                 {
-                    print("Too small to sort!");
+                    print("Count must be >= 2");
                     continue;
                 }
                 try

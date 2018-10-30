@@ -45,13 +45,13 @@ namespace SortingAlgorithms
             }
         }
         
-        /// <summary TODO: Insertion Sort />
+        /// <summary Insertion Sort />
         /// <seealso cref="https://www.youtube.com/watch?v=ntB1D3Bbz5I"/>
         public static void InsertionSort<T>(this IList<T> a) where T : IComparable
         {
             if (a == null || a.Count <= 1) return;
-            for (var i = 0; ++i < a.Count;)
-                for (var j = i; --j >= 0;)
+            for (int i = 0; ++i < a.Count;)
+                for (int j = i; --j >= 0;)
                 {
                     if (a[j].CompareTo(a[j + 1]) <= 0) break;
                     a.Move(j + 1, j);

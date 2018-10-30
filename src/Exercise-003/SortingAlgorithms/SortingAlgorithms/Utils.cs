@@ -55,9 +55,9 @@ namespace SortingAlgorithms
         {
             if (size < 0) throw new ArgumentOutOfRangeException(nameof(size));
             var result = new int[size];
-            var random = new Random();
             for (int i = 0; i < size; i++)
             {
+                var random = new Random();
                 if (max.HasValue && min.HasValue)
                     result[i] = random.Next(min.Value, max.Value);
                 else if (max.HasValue)
@@ -70,7 +70,7 @@ namespace SortingAlgorithms
 
         public static void Move<T>(this IList<T> a, int oldIndex, int newIndex)
         {
-            var removed = a[oldIndex];
+            T removed = a[oldIndex];
             a.RemoveAt(oldIndex);
             a.Insert(newIndex, removed);
         }
